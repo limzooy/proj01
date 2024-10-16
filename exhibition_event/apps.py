@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BenefitsConfig(AppConfig):
+class ExhibionEventonfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "benefits"
+    name = "exhibition_event"

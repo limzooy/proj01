@@ -32,7 +32,7 @@ urlpatterns = [
     path('classic/', include('classic.urls')),
     path('musical/', include('musical.urls')),
     path('play/', include('play.urls')),
-    path('benefits/', include('benefits.urls')),
+    path('exhibition_event/', include('exhibition_event.urls')),
     path('board/', include('board.urls')),
     path('new_news/', include('new_news.urls')),
 ]
