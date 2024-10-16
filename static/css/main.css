@@ -1,0 +1,338 @@
+body {
+    background-color: black;
+    margin: 0 10%;
+}
+
+header {
+    margin: 0; /* 기본 마진 제거 */
+    padding: 20px;
+    display: flex;  /* 플렉스 컨테이너 사용 */
+    justify-content: space-between;
+    align-items: center; /* 수직 중앙 정렬 */
+    position: fixed; /* 상단 고정 */
+    top: 0; /* 상단 위치 */
+    width: 80%;
+    background-color: black; /* 헤더 배경색 추가 */
+    z-index: 1000; /* 헤더를 다른 요소보다 위에 표시 */
+}
+
+main {
+    padding-top: 120px; /* 헤더 높이만큼 공간 확보 */
+}
+
+/* 헤더 - 로고 이미지 */
+.logo img {
+    max-height: 100px; /* 로고의 최대 높이 설정 */
+    margin-right: 50px; /* 로고와 검색창 사이 여백 */
+}
+
+/* 헤더 - 검색창 디자인 */
+.search-box {
+    display: flex;  /* 플렉스 컨테이너 사용 */
+    align-items: center;  /* 수직 중앙 정렬 */
+    /* border: 3px solid #F0F0F0; */
+    background-color: #F0F0F0;
+    border-radius: 20px;
+    width: 60%;
+    height: 40px;
+    padding: 5px;
+    position: relative; /* 부모 요소를 기준으로 자식 요소 위치 조정 */
+}
+.search-text {
+    width: 90%;
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+}
+.search-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    transform: translateY(-45%);  /* 수직 중앙 정렬 */
+    position: absolute; /* search-box 위치를 기준으로 상대적 고정 */
+    right: 5%; /* 우측 */
+    cursor: pointer;
+}
+
+/* 헤더 - 로그인 이미지 */
+.login img {
+    max-height: 60px; /* 로그인 이미지 크기 조정 */
+    margin-left: 20px; /* 검색창과의 간격 확보 */
+}
+
+/* 메인 - 메뉴바 디자인 */
+#mainNav {
+    display: flex;  /* 플렉스 컨테이너 사용 */
+    justify-content: center;
+    height: 100px;
+}
+#mainNav ul {
+    display: flex;
+    width: 100%; /* 전체 화면의 너비 */
+    justify-content: space-around; /* 메뉴 항목 간격 균등 분배 */
+}
+#mainNav ul li{
+    list-style: none; /* 목록을 표현하는 점 없앰 */
+    line-height: 60px; /* 글자를 가운데 정렬하기 위해 높이를 30px로 지정 */
+    text-align: center; /* 글자 가운데 정렬 */
+}
+#mainNav a {
+    margin: 0;
+    background-color: #F0F0F0;
+    width: 150px;
+    text-decoration: none; /* <a> 태그가 가지고 있는 기본 밑줄긋기 효과 제거 */
+    display: block; /* 글자 말고 영역을 클릭해도 링크 이동하도록 */
+    color: #000000;  /* 글자 색상 */
+    font-size: 20px;
+    border-radius: 20px;
+}
+#mainNav a:hover {
+    color: #00CC99;  /* 글자 색상 */
+    font-weight: bold;  /* 글자 굵게 */
+}
+
+.poster {
+    position: relative;
+    margin: 20px auto;
+    border: 5px solid #F0F0F0;
+    width: 80%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* 요소들 간에 공간을 균등 분배 */
+}
+.poster-comment {
+    width: 30%; /* 전체 너비의 40% 차지 */
+    height: 60%;
+    z-index: 10;
+    margin-left: 40px;  /* 포스터 설명에 여백 추가 */
+}
+.slide-container {
+    display: flex;
+    width: 60%;  /* 나머지 60%에 포스터가 들어감 */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;  /* 이미지 넘침 방지 */
+}
+.slide-container img {
+    width: 30%; /* 이미지가 컨테이너의 전체 너비를 차지 */
+    object-fit: cover;  /* 이미지 비율을 유지하면서 컨테이너에 맞게 조정 */
+    margin-right: 20px;
+}
+.slide-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #00CC99;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 20;  /* 버튼이 항상 위에 표시되도록 z-index를 높임 */
+}
+.slide-button.left {
+    left: 10px; 
+}
+.slide-button.right {
+    right: 10px;
+}
+
+/* 메인 - 새 공연, 캘린더 */
+.bottom {
+    display: flex;  /* Flexbox로 자식 요소들을 가로로 배치 */
+    justify-content: space-between;
+    margin: 30px;
+}
+.new, .calander {
+    width: 47%; /* 각 요소가 부모의 50% 차지 */
+    padding: 10px;
+    box-sizing: border-box; /* 패딩을 포함한 너비를 정확하게 50%로 계산 */
+}
+
+/* 메인 - 새로운 공연 */
+.new > a {
+    font-size: 30px;
+    color: #F0F0F0;
+    text-decoration: none;
+}
+.new-performance-poster {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.new-performance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.slide-button-new {
+    background-color: transparent;
+    color: #00CC99;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+    padding: 10px;
+}
+.slide-button-new.left {
+    margin-right: auto; /* 왼쪽 버튼은 왼쪽으로 정렬 */
+}
+.slide-button-new.right {
+    margin-left: auto; /* 오른쪽 버튼은 오른쪽으로 정렬 */
+}
+.slide-container-new {
+    display: flex;
+    justify-content: center; /* 슬라이드 컨테이너를 가운데 정렬 */
+    align-items: center;
+    width: 80%;  /* 나머지 60%에 포스터가 들어감 */
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;  /* 이미지 넘침 방지 */
+}
+.slide-container-new img {
+    width: 50%; /* 이미지가 컨테이너의 전체 너비를 차지 */
+    /* object-fit: cover;  /* 이미지 비율을 유지하면서 컨테이너에 맞게 조정 */
+}
+
+/* 메인 - 공연 캘린더 */
+.calander-body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    margin: 0;
+}
+.calander-body button { /* button 요소에 기본적으로 설정되는 스타일 속성 초기화 */
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+.calander-wrapper {
+    width: 100%;
+}
+.calander-header .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.calander-header .nav .current-date {
+    font-size: 18px;
+    font-weight: 600;
+    color: #F0F0F0;
+}
+.calander-wrapper .nav button {
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+    color: #00CC99;
+}
+.calander-header ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.calander-header li {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.nav-color-wrapper {
+    display: flex;
+    justify-content: space-between; /* nav는 왼쪽, color는 오른쪽으로 배치 */
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.color ul {
+    display: flex;
+    justify-content: flex-end; /* 끝(오른쪽) 정렬 */
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.color li {
+    margin-right: 50px; /* 각 li 요소 사이 간격 */
+    position: relative;
+    font-size: 18px; /* 글자 크기 설정 */
+    color: #F0F0F0; /* 텍스트 색상 */
+}
+.color li::before {
+    content: '';
+    position: absolute;
+    right: -25px; /* li 텍스트 오른쪽에 위치 */
+    top: 25%;
+    width: 15px; /* 원의 크기 */
+    height: 15px;
+    border-radius: 50%;
+}
+.color li:nth-child(1)::before {
+    background-color: #8390FA; /* 클래식 */
+}
+.color li:nth-child(2)::before {
+    background-color: #F88DAD; /* 뮤지컬 */
+}
+.color li:nth-child(3)::before {
+    background-color: #E0E74F; /* 연극 */
+}
+.color li:nth-child(4)::before {
+    background-color: #008aff; /* 연극 */
+}
+.calander-days ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.calander-days .weeks {
+    padding: 0; /* 패딩 초기화 */
+}
+.calander-days .weeks li {
+    font-weight: 500;
+    color: #F0F0F0;
+}
+.calander-days .days {
+    padding: 0; /* 패딩 초기화 */
+    margin-bottom: 20px;
+}
+.calander-days ul li {
+    width: calc(100% / 7);
+    position: relative;
+    font-size: 15px;
+}
+.calander-days .days li {
+    z-index: 1; /* 오늘의 날짜 표시를 위해 li 요소들을 살짝 띄우기 */
+    margin-top: 30px;
+    cursor: pointer;
+    color: #F0F0F0;
+}
+.days li.inactive {
+    color: #aaa;
+}
+.days li:hover {
+    color: #000000;
+}
+.days li:hover::before {
+    background: #F0F0F0;
+}
+.calander-days .days li::before {
+    position: absolute;
+    content: '';
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+.days li.active::before {
+    background: #00CC99;    
+}

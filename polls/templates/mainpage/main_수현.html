@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+
+    <link rel="stylesheet" href="./main.css">    
+</head>
+
+<body>
+
+    <!-- 최상단: 로고, 검색창, 회원가입, 메뉴바 -->
+    <header>
+        <a class="logo" href="main.html"><img src="logo.png" alt="로고 이미지"></a>
+        
+        <form class="search-box" action="" method="POST"> <!--나중에 POST인지 GET인지 정하기-->
+            <input class="search-text" type="text" placeholder="검색어를 입력하세요.">
+            <button class="search-btn" type="submit"><img src="search_button.svg"></button>
+        </form>
+
+        <a class="login" href="login.html"><img src="login.svg" alt="로그인 이미지" align="right"></a>
+    </header>
+
+    <main>
+        <!-- 메뉴바 -->
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#">클래식</a></li>
+                <li><a href="#">뮤지컬</a></li>
+                <li><a href="#">연극</a></li>
+                <li><a href="#">전시/행사</a></li>
+                <li><a href="#">게시판</a></li>
+            </ul>
+        </nav>
+        
+        <div class="poster">
+            <!-- 홍보 멘트 삽입 -->
+            <img class="poster-comment" src="poster_comment.png" alt="포스터 설명">
+
+            <!-- 좌우에 넘어가는 버튼 넣기 -->
+            <button class="slide-button left" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slide-button right" onclick="moveSlide(1)">&#10095;</button>
+            
+            <!-- 포스터 삽입 -->
+            <span class="slide-container">
+                <img src="./poster-01.jpg" alt="포스터 1">
+                <img src="./poster-02.jpg" alt="포스터 2">
+                <img src="./poster-03.jpg" alt="포스터 3">
+            </span>
+        </div>
+
+        <div class="bottom">
+            <span class="new">
+                <a href="new_performance.html"><div>새로운 공연</div></a>
+                
+                <div class="new-performance-poster">                  
+                    <div class="new-performance"> 
+                        <button class="slide-button-new left" onclick="moveSlide(-1)">&#10094;</button>
+                        <span class="slide-container-new"> <!-- 포스터 삽입 -->
+                            <img src="./poster-01.jpg" alt="포스터 1">
+                        </span>
+                        <button class="slide-button-new right" onclick="moveSlide(1)">&#10095;</button>
+                    </div>
+                </div>
+            </span>
+
+            <span class="calander">
+                <span style="font-size: 30px"><font color="#F0F0F0">공연 일정</font></span>
+
+                <!-- 캘린더 삽입 -->
+                <div class="calander-body">
+                    <div class="calander-wrapper">
+                        <div class="calander-header">
+                            <div class="nav-color-wrapper">
+                                <div class="nav">
+                                    <button class="prev">&#10094;</button>
+                                    <p class="current-date"></p> <!--JS로 삽입-->
+                                    <button class="none-prev">&#10095;</button>
+                                </div>
+                                <div class="color">
+                                    <ul>
+                                        <li>클래식</li>
+                                        <li>뮤지컬</li>
+                                        <li>연극</li>
+                                        <li>전시/행사</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="calander-days">
+                            <ul class="weeks">
+                                <li>일</li>
+                                <li>월</li>
+                                <li>화</li>
+                                <li>수</li>
+                                <li>목</li>
+                                <li>금</li>
+                                <li>토</li>
+                            </ul>
+
+                            <ul class="days"></ul>
+                        </div>
+                    </div>
+                </div>
+            </span>
+
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelector('.slide-container');
+            const totalSlides = slides.children.length;
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+
+    <script>
+        let currentSlide_new = 0;
+
+        function moveSlide_new(direction) {
+            const slides_new = document.querySelector('.slide-container-new');
+            const totalSlides_new = slides.children.length;
+            currentSlide_new = (currentSlide_new + direction + totalSlides_new) % totalSlides_new;
+            slides.style.transform = `translateX(-${currentSlide_new * 100}%)`;
+        }
+    </script>
+
+    <script src="./calander.js"></script>
+    
+</body>
+
+</html>
