@@ -24,7 +24,6 @@ from mainpage import views as main_views  # mainpage의 뷰를 임포트
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_views.mainpage_home, name='home'),  # 루트 URL을 홈 뷰로 설정
-    path('polls/', include('polls.urls')),
     path('mainpage/', include('mainpage.urls')),
     path('search/', include('search.urls')),
     path('login/', include('login.urls')),
